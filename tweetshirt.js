@@ -33,6 +33,7 @@ function previewHandler() {
   }
 
   drawText(canvas, context);
+  drawBird(canvas, context);
 }
 
 function drawSquare(canvas, context) {
@@ -106,4 +107,12 @@ function drawText(canvas, context) {
     canvas.width - 20,
     canvas.height - 40
   );
+}
+
+function drawBird(canvas, context) {
+  const twitterBird = new Image();
+  twitterBird.src = 'twitterBird.png';
+  twitterBird.onload = () => {
+    context.drawImage(twitterBird, 20, 120, 70, 70);
+  }
 }
