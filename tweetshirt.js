@@ -2,8 +2,8 @@ const tweets = [
   { text: 'One does not simply walk into mordor!' },
   { text: 'Who\'s afraid of the big bad wold?' },
   { text: 'Hakuna Matata' },
-  { text: 'Expectro Petrolam!'},
-  { text: 'Open sesame!'}
+  { text: 'Expectro Petrolam!' },
+  { text: 'Open sesame!' }
 ];
 
 window.onload = () => {
@@ -31,6 +31,8 @@ function previewHandler() {
       drawCircle(canvas, context);
     }
   }
+
+  drawText(canvas, context);
 }
 
 function drawSquare(canvas, context) {
@@ -70,7 +72,7 @@ function degreesToRadians(degrees) {
 function updateTweets(tweets) {
   const tweetsSelection = document.getElementById('tweets');
 
-  tweets.forEach( tweet => {
+  tweets.forEach(tweet => {
     let option = document.createElement('option');
     option.text = tweet.text;
     option.value = tweet.text.replace("\"", "'");
@@ -79,4 +81,29 @@ function updateTweets(tweets) {
   });
 
   tweetsSelection.selectedIndex = 0;
+}
+
+function drawText(canvas, context) {
+  let selectObj = document.getElementById('foregroundColor');
+  let index = selectObj.selectedIndex;
+  const fgColor = selectObj[index].value;
+
+  context.fillStyle = fgColor;
+  context.font = 'bold 1em sans-serif';
+  context.textAlign = 'left';
+  context.fillText('I saw this tweet', 20, 40);
+
+  selectObj = document.getElementById('tweets');
+  index = selectObj.selectedIndex;
+  const tweet = selectObj[index].value;
+  context.font = 'italic bold 1.2em serif';
+  context.fillText(tweet, 30, 100);
+
+  context.font = 'bold 1em sans-serif';
+  context.textAlign = 'right';
+  context.fillText(
+    'and all I got was this lousy t-shirt!',
+    canvas.width - 20,
+    canvas.height - 40
+  );
 }
