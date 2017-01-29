@@ -3,8 +3,23 @@
 <head>
   <meta charset="utf-8">
   <title>Look What I Drew</title>
+  <style>
+    canvas {
+      border: 1px solid black;
+    }
+  </style>
+  <script>
+    window.onload = () => {
+      const canvas = document.getElementById('tshirtCanvas');
+      const context = canvas.getContext('2d');
+
+      context.fillRect(10, 10, 100, 100);
+    }
+  </script>
 </head>
 <body>
-  <canvas id="lookWhatIdrew" width="600" height="200"></canvas>
+  <canvas id="tshirtCanvas" width="600" height="200">
+    Sorry, your browser does not support this element.
+  </canvas>
 </body>
 </html>
