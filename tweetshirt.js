@@ -1,5 +1,14 @@
+const tweets = [
+  { text: 'One does not simply walk into mordor!' },
+  { text: 'Who\'s afraid of the big bad wold?' },
+  { text: 'Hakuna Matata' },
+  { text: 'Expectro Petrolam!'},
+  { text: 'Open sesame!'}
+];
+
 window.onload = () => {
   const previewButton = document.getElementById('previewButton');
+  updateTweets(tweets);
   previewButton.onclick = previewHandler;
 }
 
@@ -56,4 +65,18 @@ function drawCircle(canvas, context) {
 
 function degreesToRadians(degrees) {
   return (degrees * Math.PI) / 180;
+}
+
+function updateTweets(tweets) {
+  const tweetsSelection = document.getElementById('tweets');
+
+  tweets.forEach( tweet => {
+    let option = document.createElement('option');
+    option.text = tweet.text;
+    option.value = tweet.text.replace("\"", "'");
+
+    tweetsSelection.options.add(option);
+  });
+
+  tweetsSelection.selectedIndex = 0;
 }
