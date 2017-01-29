@@ -6,10 +6,11 @@ window.onload = () => {
 function previewHandler() {
   const canvas = document.getElementById('tshirtCanvas');
   const context = canvas.getContext('2d');
+  fillBackgroundColor(canvas, context);
 
-  const selectedShape = document.getElementById('shape');
-  const selectedIndex = selectedShape.selectedIndex;
-  const shape = selectedShape[selectedIndex].value;
+  const selectShapeObj = document.getElementById('shape');
+  const selectIndex = selectShapeObj.selectedIndex;
+  const shape = selectShapeObj[selectIndex].value;
 
   if (shape === 'squares') {
     // draw 20 squares
@@ -26,4 +27,13 @@ function drawSquare(canvas, context) {
 
   context.fillStyle = 'lightblue';
   context.fillRect(x, y, width, width);
+}
+
+function fillBackgroundColor(canvas, context) {
+  const selectColorObj = document.getElementById('backgroundColor');
+  const index = selectColorObj.selectedIndex;
+  const bgColor = selectColorObj.options[index].value;
+
+  context.fillStyle = bgColor;
+  context.fillRect(0, 0, canvas.width, canvas.height);
 }
